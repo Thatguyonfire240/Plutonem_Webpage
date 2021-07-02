@@ -15,5 +15,25 @@
             <p>To generate libpluto.a, run:
                 <br>$ make
             </p>
+            <p>To install it so that your compiler can use it directly, run:
+                <br>$ make install
+            </p>
+            <p>To compile some examples, run:
+                <br>$ make exp
+            </p>
+            <p>Pre-compiled library files are available in the releases tab (only for Linux x86-64)</p>
+
+        <h2>Using the library</h2>
+            <p>1. Include the pluto header in your source file
+                <br># include [path to pluto.h] // do #include [pluto.h] if the lib is already installed
+            </p>
+            <p>2. Write your source code. An example program which draws a line:
+                <br>#include [stdlib.h]
+                <br>#include "pluto.h"									/* Change path if needed */
+                <br>
+                <br>int main()
+                <br>{
+                <br>    pluto_init_window();								/* Initialize pluto */
+            </p>
     </body>
 </html>
