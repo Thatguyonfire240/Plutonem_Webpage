@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Plutonem</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <h1>"Plutonem: The best CLI based graphics rendering software. Period." - Sun Tzu</h1>
@@ -13,68 +14,70 @@
         <h3>Who needs a GUI when you have a terminal?</h3>
         <h3>Building</h3>
             <p>To generate libpluto.a, run:
-                <pre>
-                    <code>
-                        $ make
-                    </code>
-                </pre>
+                <div class="codebox">
+                        <code>
+                            $ make
+                        </code>
+                </div>
             </p>
             <p>To install it so that your compiler can use it directly, run:
-                <pre>
+                <div class="codebox">
                     <code>
                         $ make install
                     </code>
-                </pre>
+                </div>
             </p>
             <p>To compile some examples, run:
-                <pre>
+                <div class="codebox">
                     <code>
                         $ make exp
                     </code>
-                </pre>
+                </div>
             </p>
             <p>Pre-compiled library files are available in the releases tab (only for Linux x86-64)</p>
 
         <h3>Using the library</h3>
             <ol>
                 <li>Include the pluto header in your source file
-                    <pre>
+                    <div class="codebox">
                         <code>
                             # include [path to pluto.h] // do #include [pluto.h] if the lib is already installed
                         </code>
-                    </pre>
+                    </div>
                 </li>
                 <li>Write your source code. An example program which draws a line:
-                    <pre>
+                    <div class="codebox">
+                        <pre>
                         <code>
-                            #include [stdlib.h]
-                                #include "pluto.h"									/* Change path if needed */
-                                
-                                int main()
-                                {
-                                    pluto_init_window();								/* Initialize pluto */
-                                    pluto_save_screen();								/* Save screen */
-                                
-                                    for (;;)
-                                    {
-                                        for (int i = 0; i < _pluto_canvas.cheight; i++)
-                                        {
-                                            for (int j = 0; j < _pluto_canvas.cwidth; j++)
-                                            {
-                                                pluto_set_cpix(j, i, rand() % 256, rand() % 256, rand() % 256);		/* Set pixel with random colours */
-                                            }
-                                        }
-                                
-                                    pluto_write_out();								/* Write to output buffer */
-                                    pluto_render();									/* Render the output buffer */
-                                    }
-                                
-                                    pluto_deinit();
-                                    return 0;
-                                }
-                                
+#include [stdlib.h]
+#include "pluto.h"									/* Change path if needed */
+
+int main()
+{
+    pluto_init_window();								/* Initialize pluto */
+    pluto_save_screen();								/* Save screen */
+
+    for (;;)
+    {
+    	for (int i = 0; i < _pluto_canvas.cheight; i++)
+    	{
+	    for (int j = 0; j < _pluto_canvas.cwidth; j++)
+	    {
+	    	pluto_set_cpix(j, i, rand() % 256, rand() % 256, rand() % 256);		/* Set pixel with random colours */
+	    }
+    	}
+
+	pluto_write_out();								/* Write to output buffer */
+	pluto_render();									/* Render the output buffer */
+    }
+
+    pluto_deinit();
+    return 0;
+}
+
                         </code>
-                    </pre>
+                        </pre>
+                    </div>
                 </li>
                 <li>Link the library generated, for example:
                     <pre>
@@ -83,7 +86,7 @@
                         </code>
                     </pre>
                 </li>
-                <li>You/re done! just run your program now!</li>
+                <li>You're done! just run your program now!</li>
             <p>Comments in the pluto.h file describe what each function/data structure does</p>
             <p>Perlin noise using Plutonem
                 <img src="https://raw.githubusercontent.com/Smart6502/plutonem/main/screenshots/perlin_noise.png"
@@ -117,11 +120,11 @@
                     <li>Check if proper fonts are installed. Pluto uses Unicode characters from <!--insert box here -->U+10240(10) to U+10495(10). I recommend the Cascadia Mono font.</li>
                     <li>Check if your terminal supports Unicode</li>
                     <li>Check your locale, lang (pluto only supports UTF-8 currently). I have my locale set to <!--insert box here -->en_US.UTF-8. On Arch Linux, which I use, I would use this command to set it:
-                        <pre>
+                        <div class="codebox">
                             <code>
                                 # localectl set-locale LANG=en_US.UTF-8
                             </code>
-                        </pre>
+                        </div>
                     </li>
                     <li>Open an issue in the issues tab, provide your terminal name, what locale it is set to, and your font</li>
                 </ol>

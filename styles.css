@@ -1,0 +1,19 @@
+.codebox {
+	border:1px solid black;
+	background-color:#EEEEFF;
+	width:300px;
+	width:50%;
+	padding:10px;
+}
+.codebox code{
+	font-size:0.9em;
+}
+.codeboxML {
+	border:1px solid black;
+	background-color:#EEEEFF;
+	white-space: pre-line;
+	padding:10px;
+	font-size:0.9em;
+	display: inline;
+}
+
