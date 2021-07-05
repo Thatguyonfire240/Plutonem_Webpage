@@ -36,21 +36,54 @@
             <p>Pre-compiled library files are available in the releases tab (only for Linux x86-64)</p>
 
         <h2>Using the library</h2>
-            <p>1. Include the pluto header in your source file
-                <br># include [path to pluto.h] // do #include [pluto.h] if the lib is already installed
-            </p>
-            <p>2. Write your source code. An example program which draws a line:
-                <br>#include [stdlib.h]
-                <br>#include "pluto.h"									/* Change path if needed */
-                <br>
-                <br>int main()
-                <br>{
-                <br>    pluto_init_window();								/* Initialize pluto */ 
-            </p>
-            <p>3. Link the library generated, for example:
-                <br>[insert code box here]
-            </p>
-            <p>4. You/re done! just run your program now!</p>
+            <ol>
+                <li>Include the pluto header in your source file
+                    <pre>
+                        <code>
+                            # include [path to pluto.h] // do #include [pluto.h] if the lib is already installed
+                        </code>
+                    </pre>
+                </li>
+                <li>Write your source code. An example program which draws a line:
+                    <pre>
+                        <code>
+                            #include [stdlib.h]
+                                #include "pluto.h"									/* Change path if needed */
+                                
+                                int main()
+                                {
+                                    pluto_init_window();								/* Initialize pluto */
+                                    pluto_save_screen();								/* Save screen */
+                                
+                                    for (;;)
+                                    {
+                                        for (int i = 0; i < _pluto_canvas.cheight; i++)
+                                        {
+                                            for (int j = 0; j < _pluto_canvas.cwidth; j++)
+                                            {
+                                                pluto_set_cpix(j, i, rand() % 256, rand() % 256, rand() % 256);		/* Set pixel with random colours */
+                                            }
+                                        }
+                                
+                                    pluto_write_out();								/* Write to output buffer */
+                                    pluto_render();									/* Render the output buffer */
+                                    }
+                                
+                                    pluto_deinit();
+                                    return 0;
+                                }
+                                
+                        </code>
+                    </pre>
+                </li>
+                <li>Link the library generated, for example:
+                    <pre>
+                        <code>
+                            $ gcc -o program program.c -lpluto  # install it before or use -L[lib_folder_path][/lib_folder_path]
+                        </code>
+                    </pre>
+                </li>
+                <li>You/re done! just run your program now!</li>
             <p>Comments in the pluto.h file describe what each function/data structure does</p>
             <p>Perlin noise using Plutonem
                 <img src="https://raw.githubusercontent.com/Smart6502/plutonem/main/screenshots/perlin_noise.png"
@@ -59,12 +92,6 @@
             <p>Mandelbrot (examples/mandelbrot.c)
                 <img src="https://raw.githubusercontent.com/Smart6502/plutonem/main/screenshots/mandelbrot.png"
                      alt="Mandelbrot">
-                <ol>
-                    <li>this is a test</li>
-                    <li>of an ordered list</li>
-                    <li>will it be in bold?</li>
-                    <li>or will it not? we will find out!</li>
-                </ol>
             </p>
             <p>Image rendered using plutonem
                 <img src="https://raw.githubusercontent.com/Smart6502/plutonem/main/screenshots/image_viewer.png"
@@ -89,11 +116,12 @@
                     <li>Check if proper fonts are installed. Pluto uses Unicode characters from <!--insert box here -->U+10240(10) to U+10495(10). I recommend the Cascadia Mono font.</li>
                     <li>2. Check if your terminal supports Unicode</li>
                     <li>3. Check your locale, lang (pluto only supports UTF-8 currently). I have my locale set to <!--insert box here -->en_US.UTF-8. On Arch Linux, which I use, I would use this command to set it:
-                    <pre>
-                        <code>
-                            # localectl set-locale LANG=en_US.UTF-8
-                        </code>
-                    </pre></li>
+                        <pre>
+                            <code>
+                                # localectl set-locale LANG=en_US.UTF-8
+                            </code>
+                        </pre>
+                    </li>
                     <li>4. Open an issue in the issues tab, provide your terminal name, what locale it is set to, and your font</li>
                 </ol>
             </p>
