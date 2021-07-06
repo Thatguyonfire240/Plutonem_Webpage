@@ -16,4 +16,10 @@
 	font-size:0.9em;
 	display: inline;
 }
+.codeboxLite {
+	border:1px solid black;
+	background-color:#EEEEFF;
+	width:auto;
+	padding:auto;
+}
 
