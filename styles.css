@@ -22,4 +22,12 @@
 	width:auto;
 	padding:auto;
 }
-
+.codeboxAuto {
+	border:1px solid black;
+	background-color:#EEEEFF;
+	width:auto;
+	padding:10px;
+}
+.codeboxAuto code{
+	font-size:0.9em;
+}
