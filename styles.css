@@ -32,3 +32,8 @@
 .codeboxAuto code{
 	font-size:0.9em;
 }
+#images {
+	width: 50%;
+	margin:0;
+	text-align: left;
+}
